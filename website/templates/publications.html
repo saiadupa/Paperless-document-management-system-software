@@ -1,0 +1,87 @@
+{% extends "base.html" %} {% block title %}publications{% endblock %} {% block content
+    %}
+  
+  
+  
+    <!Doctype Html>  
+    <Html>     
+    <Head>      
+    
+    <style>  
+    body  
+    {  
+    background-image:url("");  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }  
+    </style>  
+    </Head>  
+    <Body>     
+    </Body>  
+    </Html>  
+  
+  
+  
+  
+  
+  
+  
+    <h1 align="center">publications </h1><br>
+    <br>
+  
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="JournalName_Conference" placeholder="Journal Name Conference" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="ISSN_ISBN_Number_Progress" placeholder="ISSN ISBN Number Progress" class="table-striped"><br> 
+      <br>
+      <input type="text" name="Month_and_Year" placeholder="Month & Year" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="text" name="Title" placeholder="Title" class="table-striped" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="url" name="Link" placeholder="Link" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+      <br>
+     
+      <br/>
+      <br>
+     
+      <br>
+      <div style='text-align: center;'><br>
+        
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </div><br>
+     
+      
+    </form>
+    <ul class="list-group list-group-flush" id="notes">
+      {% if user.publication %}
+      <table class="table table-striped table-bordered">
+      <tr>
+        <th>JournalName_Conference</th>
+        <th>  ISSN_ISBN_Number_Progress</th>
+        <th>  Month_and_Year</th>
+        <th>  Title</th>
+        <th>  Year </th>
+        <th>  Link</th>
+        <th>  file</th>
+      </tr>
+      {% for publication in user.publication %}
+      <tr>
+        <td>{{ publication.JournalName_Conference }}</td>
+        <td>{{ publication.ISSN_ISBN_Number_Progress }}</td>
+        <td>{{ publication.Month_and_Year }}</td>
+        <td>{{ publication.Title }}</td>
+        <td>{{ publication.publication_year }}</td>
+        <td>{{ publication.Link }}</td>
+        <td>{{ publication.file4 }}</td>
+        <td><button type="button" class="close" onClick="deletepublications( {{ publication.id }}  )">
+          <span aria-hidden="true">&times;</span>
+        </button></td>
+      </tr>
+      {% endfor %}
+    </table>
+      {% else %}
+      <p>No publications created yet...</p>
+      {% endif %}
+    </ul><br>
+    <br>
+    <a href="/download"><button  class="btn btn-primary" >Download data</button></a>
+  
+    {% endblock %}

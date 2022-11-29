@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title %}Events{% endblock %} {% block content
+    %}
+  
+  
+  
+    <!Doctype Html>  
+    <Html>     
+    <Head>      
+    
+    <style>  
+    body  
+    {  
+    background-image:url("");  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }  
+    </style>  
+    </Head>  
+    <Body>     
+    </Body>  
+    </Html>  
+  
+  
+  
+  
+  
+  
+  
+    <h1 align="center">EVENTS </h1>
+    <br>
+  
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="Event_Name" placeholder="Event_Name" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Proposal_Date" placeholder="Proposal_Date" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Conductin_Date" placeholder="Conductin_Date" class="table-striped"><br> 
+      <br>
+      <input type="text" name="Instituion_Approval" placeholder="Instituion_Approval" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="text" name="Report" placeholder="Report" class="table-striped" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      
+      <br/>
+      <br>
+      <br>
+      <div style='text-align: center;'><br>
+        
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </div>
+    </form><br>
+
+    <ul class="list-group list-group-flush" id="Events">
+      {% if user.Events  %}
+      <table class="table table-striped table-bordered">
+      <tr>
+        <th>Event_Name</th>
+        <th>  Proposal_Date</th>
+        <th>  Conductin_Date</th>
+        <th>  Instituion_Approval</th>
+        <th>  Report </th>
+        <th>  file</th>
+      </tr>
+      {% for Events in user.Events %}
+      <tr>
+        <td>{{ Events.Event_Name }}</td>
+        <td>{{ Events.Proposal_Date }}</td>
+        <td>{{ Events.Conductin_Date }}</td>
+        <td>{{ Events.Instituion_Approval }}</td>
+        <td>{{ Events.Report }}</td>
+        <td>{{ Events.file_file_events }}</td>
+        <td><button type="button" class="close" onClick="deleteEvents( {{ Events.id }}  )">
+          <span aria-hidden="true">&times;</span>
+        </button></td>
+      </tr>
+      {% endfor %}
+    </table>
+      {% else %}
+      <p>No Events created yet...</p>
+      {% endif %}
+    </ul><br>
+    <br>
+  
+    <a href="/download"><button  class="btn btn-primary" >Download data</button></a>
+  
+    {% endblock %}

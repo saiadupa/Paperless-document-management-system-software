@@ -1,0 +1,81 @@
+ {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+  %}
+
+
+
+  <!Doctype Html>  
+  <Html>    
+  <Head>       
+  <style>  
+  body  
+  {  
+  background-image:url("");  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  }  
+  </style>  
+  </Head>  
+  <Body>     
+  </Body>  
+  </Html>  
+
+  <h1 align="center">Paper publications </h1><br>
+ 
+
+  <form method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Title of paper" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    <input type="text" name="author" placeholder="Name of the author" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    <input type="text" name="teacher" placeholder="Department of the teacher" class="table-striped"><br> 
+    <br>
+    <input type="text" name="journal" placeholder="Name of journal" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <input type="text" name="year" placeholder="Year of publication" class="table-striped" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    <input type="url" name="Link" placeholder="Link" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+    <br>
+    <input type="text" name="index" placeholder="h-index" class="table-striped">
+    <br/>
+    <br>
+    
+    <br>
+    <div style='text-align: center;'><br>
+      
+      <button  type="submit" class="btn btn-primary">SUBMIT</button>
+    </div>
+  </form><br>
+
+
+  <ul class="list-group list-group-flush" id="notes">
+    {% if user.notes  %}
+    <table id="Publications" class="table table-striped table-bordered">
+    <tr>
+      <th>Title</th>
+      <th>  Author</th>
+      <th>  Teacher</th>
+      <th>  Journal</th>
+      <th>  Year </th>
+      <th>  Link</th>
+      <th>  Index</th>
+    </tr>
+    {% for note in user.notes %}
+    <tr>
+      <td>{{ note.title }}</td>
+      <td>{{ note.author }}</td>
+      <td>{{ note.department_teacher }}</td>
+      <td>{{ note.journal }}</td>
+      <td>{{ note.publication_year }}</td>
+      <td>{{ note.link }}</td>
+      <td>{{ note.h_index }}</td>
+      <td><button type="button" class="close" onClick="deleteNote( {{ note.id }}  )">
+        <span aria-hidden="true">&times;</span>
+      </button></td>
+    </tr>
+    {% endfor %}
+  </table>
+    {% else %}
+    <p>No notes created yet...</p>
+    {% endif %}
+  </ul><br>
+  <br>
+  <a><button href="download.html" class="btn btn-primary" >Download data</button></a>
+
+  {% endblock %}

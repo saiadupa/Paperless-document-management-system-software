@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block title %}CP{% endblock %} {% block content
+    %}
+  
+  
+  
+    <!Doctype Html>  
+    <Html>     
+    <Head>      
+    
+    <style>  
+    body  
+    {  
+    background-image:url("");  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }  
+    </style>  
+    </Head>  
+    <Body>     
+    </Body>  
+    </Html>  
+  
+  
+  
+  
+  
+  
+  
+    <h1 align="center">CP </h1>
+    <br>
+  
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="Proposal_Name" placeholder="Proposal Name" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Organization_Name" placeholder="Organization Name" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Start_Date" placeholder="Start Date" class="table-striped"><br> 
+      <br>
+      <input type="text" name="Completion_Date" placeholder="Completion Date" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="text" name="Status_Preparation" placeholder="Status Preparation" class="table-striped" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Proposal_Copy" placeholder="Proposal Copy" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+      <br>
+      <input type="text" name="Final_Report" placeholder="Final Report" class="table-striped">
+      <br/>
+      <br>
+      
+      <br>
+      <div style='text-align: center;'><br>
+        
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </div><br>
+     
+      
+    </form>
+    <ul class="list-group list-group-flush" id="notes">
+      {% if user.cp  %}
+      <table class="table table-striped table-bordered">
+      <tr>
+        <th>Proposal_Name</th>
+        <th>  Organization_Name</th>
+        <th>  Start_Date</th>
+        <th>  Completion_Date</th>
+        <th>  Status_Preparation </th>
+        <th>  Proposal_Copy</th>
+        <th>  Final_Report</th>
+      </tr>
+      {% for cp in user.cp %}
+      <tr>
+        <td>{{ cp.Proposal_Name }}</td>
+        <td>{{ cp.Organization_Name }}</td>
+        <td>{{ cp.Start_Date }}</td>
+        <td>{{ cp.Completion_Date }}</td>
+        <td>{{ cp.Status_Preparation }}</td>
+        <td>{{ cp.Proposal_Copy }}</td>
+        <td>{{ cp.Final_Report }}</td>
+        <td><button type="button" class="close" onClick="deleteCP( {{ cp.id }}  )">
+          <span aria-hidden="true">&times;</span>
+        </button></td>
+      </tr>
+      {% endfor %}
+    </table>
+      {% else %}
+      <p>No CP's created yet...</p>
+      {% endif %}
+    </ul><br>
+    <br>
+  
+    <a href="/download"><button  class="btn btn-primary" >Download data</button></a>
+  
+    {% endblock %}

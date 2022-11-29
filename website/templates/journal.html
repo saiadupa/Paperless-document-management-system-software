@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block title %}JOURNAL{% endblock %} {% block content
+    %}
+  
+  
+  
+    <!Doctype Html>  
+    <Html>     
+    <Head>      
+    
+    <style>  
+    body  
+    {  
+    background-image:url("");  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }  
+    </style>  
+    </Head>  
+    <Body>     
+    </Body>  
+    </Html>  
+  
+  
+  
+  
+  
+  
+  
+    <h1 align="center">JOURNAL </h1>
+    <br>
+  
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="JournalName" placeholder="JournalName" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="ISSN_Number" placeholder="ISSN_Number" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="month_and_years" placeholder="month_and_years" class="table-striped"><br> 
+      <br>
+      <input type="text" name="Title" placeholder="Title" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="text" name="Paper_Link" placeholder="Paper_Link" class="table-striped" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+     
+      <br/>
+      <br>
+      
+      <br>
+      <div style='text-align: center;'><br>
+        
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </div><br>
+     
+      
+    </form>
+    <ul class="list-group list-group-flush" id="notes">
+      {% if user.journal  %}
+      <table class="table table-striped table-bordered">
+      <tr>
+        <th>JournalName</th>
+        <th>  Organization_Name</th>
+        <th>  ISSN_Number</th>
+        <th>  month_and_years</th>
+        <th>  Title</th>
+        <th>  Paper_Link</th>
+      </tr>
+      {% for journal in user.journal %}
+      <tr>
+        <td>{{ journal.JournalName }}</td>
+        <td>{{ journal.ISSN_Number }}</td>
+        <td>{{ journal.month_and_years }}</td>
+        <td>{{ journal.Title }}</td>
+        <td>{{ journal.Paper_Link }}</td>
+        <td><button type="button" class="close" onClick="deleteJOURNAL( {{ journal.id }}  )">
+          <span aria-hidden="true">&times;</span>
+        </button></td>
+      </tr>
+      {% endfor %}
+    </table>
+      {% else %}
+      <p>No JOURNAL's created yet...</p>
+      {% endif %}
+    </ul><br>
+    <br>
+  
+    <a href="/download"><button  class="btn btn-primary" >Download data</button></a>
+  
+    {% endblock %}

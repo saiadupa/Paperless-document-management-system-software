@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% block title %}Workshops{% endblock %} {% block content
+    %}
+  
+  
+    <!Doctype Html>  
+    <Html>     
+    <Head>      
+    
+    <style>  
+    body  
+    {  
+    background-image:url("");  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }  
+    </style>  
+    </Head>  
+    <Body>     
+    </Body>  
+    </Html>  
+  
+  
+  
+  
+  
+  
+  
+    <h1 align="center">Workshops </h1>
+    <br>
+  
+    <form method="POST" enctype="multipart/form-data">
+      <input type="text" name="Academic_Year" placeholder="Academic_Year" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Workshop_Name" placeholder="Workshop_Name" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Proposal_Date" placeholder="Proposal_Date" class="table-striped"><br> 
+      <br>
+      <input type="text" name="Conductin_Date" placeholder="Conductin_Date" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="text" name="Instituion_Approval" placeholder="Instituion_Approval" class="table-striped" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      <input type="text" name="Report" placeholder="Report" class="table-striped">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+      <br>
+      <br/>
+      <br>
+      
+      <br>
+      <div style='text-align: center;'><br>
+        
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </div><br>
+    </form>
+
+    <ul class="list-group list-group-flush" id="Workshops">
+      {% if user.Workshop  %}
+      <table class="table table-striped table-bordered">
+      <tr>
+        <th>  Academic_Year</th>
+        <th>  Workshop_Name</th>
+        <th>  Proposal_Date</th>
+        <th>  Conductin_Date</th>
+        <th>  Instituion_Approval </th>
+        <th>  Report</th>
+        <th>  file</th>
+      </tr>
+      {% for Workshop in user.Workshop %}
+      <tr>
+        <td>{{ Workshop.Academic_Year }}</td>
+        <td>{{ Workshop.Workshop_Name }}</td>
+        <td>{{ Workshop.Proposal_Date }}</td>
+        <td>{{ Workshop.Conductin_Date }}</td>
+        <td>{{ Workshop.Instituion_Approval }}</td>
+        <td>{{ Workshop.Report }}</td>
+        <td>{{ Workshop.file3 }}</td>
+        <td><button type="button" class="close" onClick="deleteWorkshops( {{ Workshop.id }}  )">
+          <span aria-hidden="true">&times;</span>
+        </button></td>
+      </tr>
+      {% endfor %}
+    </table>
+      {% else %}
+      <p>No Workshop created yet...</p>
+      {% endif %}
+    </ul><br>
+    <br>
+  
+    <a href="/download"><button  class="btn btn-primary" >Download data</button></a>
+  
+{% endblock %}

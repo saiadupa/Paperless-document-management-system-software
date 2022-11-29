@@ -1,0 +1,125 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+  %}
+  <!Doctype Html>  
+  <Html>     
+  <Head> 
+    HITAM 
+    <style>  
+  body  
+  {  
+  background-image:url("https://qph.fs.quoracdn.net/main-qimg-6a98fb6da5f782dd86ab8b9bedfbe554");  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  }  
+  </style>  
+  </Head>  
+  <Body>     
+  </Body>  
+  </Html>  
+  
+  
+    
+  <style>
+    body, html {
+      height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .bg-img {
+      /* The image used */
+      background-image: url("  ");
+    
+      min-height: 380px;
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+    
+    /* Add styles to the form container */
+    
+    .container { 
+      position: absolute;
+      right:  0;
+      margin: 20px;
+      max-width: 300px;
+      padding: 16px;
+      background-color: #fcfcfcd2;
+    }
+    
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background:#f7faf8d2;
+    }
+    
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: rgb(249, 236, 236);
+      outline: none;
+    }
+    
+    /* Set a style for the submit button */
+    .btn {
+      background-color: #04a84e;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+    
+    .btn:hover {
+      opacity: 1;
+    }
+    </style>
+
+    
+  
+  
+  <form  align="center" method="POST">
+    <h2 align="center">Login</h2><br>
+    <br>
+    <div  class="form-group">
+      <label for="email"> <b>Email</b></label>
+      <input 
+        type="email"
+        class="form-control"
+        id="email"
+        name="email" 
+        placeholder="Enter email"  style="width: 250px ;" 
+      />
+
+
+      
+
+
+    </div>
+    <div align="center" class="form-group">
+      <label for="password"><b>Password</b></label>
+      <input 
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Enter password"   style="width: 250px;" 
+      />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Login</button>
+    
+  </form>
+
+
+  
+  {% endblock %}
